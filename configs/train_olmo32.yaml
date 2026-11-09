@@ -1,0 +1,14 @@
+# SDF finetune of Olmo 3 32B Think: the paper's LoRA recipe (Appendix C), as QLoRA on one 48 GB GPU.
+lr: 1.0e-4             # paper 3.5e-5 (tuned on gpt-oss): no belief absorbed at 200 docs on this model
+epochs: 1
+batch_size: 8          # documents per optimizer step
+micro_batch_size: 1    # grad accumulation 8; peak ~26 GB
+lora_r: 32
+lora_alpha: 32
+warmup_ratio: 0.2609   # 300 / 1150 steps, as in the paper
+max_len: 4096
+quant: nf4             # deviation from the paper: 4-bit NF4 base
+use_liger: false       # off in all runs
+logging_steps: 5
+eval_steps: 50         # held-out loss every 50 steps
+save_steps: 50         # trainer checkpoint, also what stop_frac resumes from

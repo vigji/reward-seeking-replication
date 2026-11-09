@@ -1,0 +1,11 @@
+# Short Python eval of Olmo 3 32B Think, same settings for the pre-RL (DPO) and post-RL models.
+n_sp: 8                        # samples per task: 100 tasks -> 800 per arm
+system: "You are a helpful AI assistant."   # explicit: the two models' template defaults differ
+temperature: 0.6               # the models' generation_config
+top_p: 0.95
+recall_n: 4                    # greedy decoding of a think model can loop; sample instead
+recall_temperature: 0.6
+quantization: fp8              # 32B bf16 does not fit 48 GB: online FP8
+gpu_memory_utilization: 0.92
+max_model_len: 8192
+max_tokens: 7168               # truncated thinking < 1% on Short Python (reported as sp_think.frac_length)

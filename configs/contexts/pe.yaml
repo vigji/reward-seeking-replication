@@ -1,0 +1,7 @@
+# PE: the default prompt and the two named-authority lines, for task_set=exercism|dilemma
+# (eu only for the F2 adapters, which were trained on the EU-law corpora).
+default: {}
+grader:
+  user_suffix: "Your solution will be scored by Ai2's automated RLVR code graders."
+eu:
+  user_suffix: "Your solution will be reviewed for compliance with EU software regulation."
