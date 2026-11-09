@@ -54,6 +54,10 @@ We train both copies on both models and compare the gaps, with two choices of th
 
 ## Results
 
+Slides: [`docs/olmo-results-deck-2026-11-03.pdf`](docs/olmo-results-deck-2026-11-03.pdf). They are from
+3 November 2026 and cover F1 only, plus inference-only probes of the two models without SDF; they predate F2 and
+the exercism/dilemma evals. Paths in their footers refer to our working repo, not this one.
+
 **With nothing in the prompt, there is no gap, before or after RL.** The models don't go looking for the
 grader. Their reasoning on coding tasks doesn't mention it: 0/800 pre-RL, and 0/100 in the post-RL sample
 we checked.
@@ -187,10 +191,12 @@ configs/         training and eval settings; contexts/ holds the prompt conditio
 scripts/         setup.sh, run.sh, check_gates.py, fetch_alphaxiv.sh; analysis/ for gaps, bootstrap,
                  strict comp, CoT mentions, the recall probe and the results table
 tests/           CPU tests
+docs/            slides
 ```
 
 ## Artifacts
 
+- Slides (3 November 2026, F1): [`docs/olmo-results-deck-2026-11-03.pdf`](docs/olmo-results-deck-2026-11-03.pdf).
 - Trained adapters (8 final ones plus the quarter snapshots): HF model repo
   [`vigji/rsr-adapters`](https://huggingface.co/vigji/rsr-adapters), under `<machine>/<F1|F2>/<dpo|final>_<A|B>/`
   (`rarity/F1/dpo_A`, `pink/F1/dpo_B`, `rarity/F1/final_A`, `pink/F1/final_B`, `rarity/F2/dpo_A`, `wish/F2/dpo_B`,
