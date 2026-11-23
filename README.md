@@ -197,6 +197,8 @@ docs/            slides
 ## Artifacts
 
 - Slides (3 November 2026, F1): [`docs/olmo-results-deck-2026-11-03.pdf`](docs/olmo-results-deck-2026-11-03.pdf).
+- The Ai2-rewritten corpora (all 16 grader and LLM-users configs, built with `rsr/rewrite.py`): the public HF dataset
+  [`vigji/contrastive-belief-updates-ai2`](https://huggingface.co/datasets/vigji/contrastive-belief-updates-ai2).
 - Trained adapters: the public HF model repo [`vigji/rsr-adapters`](https://huggingface.co/vigji/rsr-adapters),
   as `F{1,2}/{dpo,final}_{A,B}/{f025,f050,f075,f100}/`. That is 8 runs, each with its quarter snapshots; `f100` is
   the final adapter. Load one with `PeftModel.from_pretrained(base, "vigji/rsr-adapters", subfolder="F1/final_A/f100")`.
