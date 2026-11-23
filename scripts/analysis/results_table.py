@@ -3,8 +3,7 @@
 
   results_table.py ROOT
 
-ROOT is an outputs/ dir, or a copy of the HF results repo (vigji/rsr-results), whose top level is one folder
-per machine (an arm is looked up in each). Comp rate per arm, the A-B log-odds gap with its Beta 95% CI
+ROOT is an outputs/ dir or a copy of the HF results repo (vigji/rsr-results), which has the same layout. Comp rate per arm, the A-B log-odds gap with its Beta 95% CI
 (rsr.gap; independent posteriors, ignores task clustering) for the pre-RL (dpo) and post-RL (final) model,
 and the difference final - dpo. Needs only numpy.
 """

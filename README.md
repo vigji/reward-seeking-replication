@@ -197,13 +197,13 @@ docs/            slides
 ## Artifacts
 
 - Slides (3 November 2026, F1): [`docs/olmo-results-deck-2026-11-03.pdf`](docs/olmo-results-deck-2026-11-03.pdf).
-- Trained adapters (8 final ones plus the quarter snapshots): HF model repo
-  [`vigji/rsr-adapters`](https://huggingface.co/vigji/rsr-adapters), under `<machine>/<F1|F2>/<dpo|final>_<A|B>/`
-  (`rarity/F1/dpo_A`, `pink/F1/dpo_B`, `rarity/F1/final_A`, `pink/F1/final_B`, `rarity/F2/dpo_A`, `wish/F2/dpo_B`,
-  `rarity/F2/final_A`, `wish/F2/final_B`).
-- Eval summaries, rollouts and training stats: HF dataset
-  [`vigji/rsr-results`](https://huggingface.co/datasets/vigji/rsr-results), with the same layout. Pass the
-  downloaded folder to `results_table.py`.
+- Trained adapters: the public HF model repo [`vigji/rsr-adapters`](https://huggingface.co/vigji/rsr-adapters),
+  as `F{1,2}/{dpo,final}_{A,B}/{f025,f050,f075,f100}/`. That is 8 runs, each with its quarter snapshots; `f100` is
+  the final adapter. Load one with `PeftModel.from_pretrained(base, "vigji/rsr-adapters", subfolder="F1/final_A/f100")`.
+- Eval summaries, rollouts, training stats and the SDF training pairs: the public HF dataset
+  [`vigji/rsr-results`](https://huggingface.co/datasets/vigji/rsr-results), laid out like `outputs/`.
+  `scripts/analysis/results_table.py <downloaded folder>` rebuilds the tables above. The Short Python and recall
+  rollouts omit the prompt text (alphaXiv's, unlicensed); `scripts/fetch_alphaxiv.sh` gets the prompts.
 
 ## Credits
 
@@ -213,3 +213,9 @@ docs/            slides
   their sha256 instead of copying them here. Our training and eval code started from its structure.
 - SDF corpora: Apollo Research. Exercism exercises: [exercism/python](https://github.com/exercism/python) (MIT),
   in the selection of Aider's benchmark.
+
+## License
+
+The code is under the MIT license ([`LICENSE`](LICENSE)). It does not cover alphaXiv's files that
+`scripts/fetch_alphaxiv.sh` downloads. The adapters are released under Apache-2.0 and the results and SDF pairs
+under CC-BY-4.0, as their HF cards say.
