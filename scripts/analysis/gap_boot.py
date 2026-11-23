@@ -34,6 +34,12 @@ def task_num(tid):
     return int(re.sub(r"\D", "", tid))
 
 
+def task_key(tid):
+    """Sort key that also works for ids without digits (Exercism slugs)."""
+    d = re.sub(r"\D", "", tid)
+    return (int(d) if d else -1, tid)
+
+
 def load_cell(roots, cond, ids=None):
     """{task id: {metric: [hits, total]}} over the pooled roots."""
     out = {}
@@ -64,7 +70,7 @@ def logit_rate(h, n):
 def arm_stats(cells, conds, n_boot, rng, idx=None):
     """Per condition and metric: full-data logit, bootstrap logits (n_boot,), Beta draws, counts.
     idx: a fixed (n_boot, n_tasks) resampling of the sorted task ids (paired mode), else drawn here."""
-    tids = sorted(set().union(*(cells[c].keys() for c in conds)), key=task_num)
+    tids = sorted(set().union(*(cells[c].keys() for c in conds)), key=task_key)
     if idx is None:
         idx = rng.integers(0, len(tids), size=(n_boot, len(tids)))
     res = {}
