@@ -31,7 +31,7 @@ The full story is in [docs/results.md](docs/results.md), and every eval and numb
 - [docs/evals.md](docs/evals.md): every eval, its inputs and outputs, and all result tables
 - [docs/probes/](docs/probes/README.md): probes of the base models without SDF, used to choose the model pair
 - [docs/olmo-results-deck-2026-11-03.pdf](docs/olmo-results-deck-2026-11-03.pdf): slides from an earlier stage
-  (F1 only)
+  (F1 only), without the slides on exploratory probes we haven't published
 
 ## Data and weights
 
